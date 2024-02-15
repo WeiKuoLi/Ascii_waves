@@ -24,9 +24,10 @@ string render_image(vector<vector<double>> *mp){
     for(i=0;i<n;i++){
         for(j=0;j<m;j++){
 	    brightness = min((int)((*mp)[i][j] * resolution), resolution-1);
-	    ascii_mp[i] += ascii_sample[brightness];
+	    ascii_mp[i] +=  ' ';
+	    ascii_mp[i] +=  ascii_sample[brightness];
 	}
-    	image += ascii_mp[i] + '\n';
+    	image += ascii_mp[i] + "\r\n";
     }
     
     return image;	
@@ -48,7 +49,7 @@ vector<vector<double>>*  make_waves(int n, int m, double k, double w, double t){
 int main() {
 
     int num_frames = 100;
-    double k = 1.0, w=2*M_PI, dt=0.01, t=0.0;
+    double k = .6, w=2*M_PI, dt=0.015, t=0.0;
     int height=30, width=30;
     // Clear the terminal
     std::cout << "\x1b[2J";
@@ -103,7 +104,7 @@ int main() {
         std::cout << frames[frame_index];
 
         // Wait for a short time before displaying the next frame
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::this_thread::sleep_for(std::chrono::milliseconds((int)(dt*1000)));
 
     }
 
