@@ -1,14 +1,14 @@
 #ifndef __PHYSICS_H_
 #define __PHYSICS_H_
 
-#include <vector>
-#include <utility>
-
 #include <geometry.hpp>
-SimpleObject::Triangle3D  project_triangle_to_canvas(SimpleObject::Triangle3D triangle){
+#include <utility>
+#include <vector>
+SimpleObject::Triangle3D project_triangle_to_canvas(
+    SimpleObject::Triangle3D triangle) {
   // only support canvas sitting on the xz plane facing +y
   // light coming from +z and -z
-  if(triangle.normal_vector.y >0)  return SimpleObject::null_triangle;
+  if (triangle.normal_vector.y > 0) return SimpleObject::null_triangle;
   SimpleObject::Point3D origin_point = triangle.origin_point;
   SimpleObject::Point3D left_point = triangle.left_point;
   SimpleObject::Point3D right_point = triangle.right_point;
@@ -21,10 +21,9 @@ SimpleObject::Triangle3D  project_triangle_to_canvas(SimpleObject::Triangle3D tr
   vec_l.z = 0.0;
   vec_r.z = 0.0;
   double texture = (vec_r ^ vec_l).size() / 2.0 / triangle.size();
-  SimpleObject::Triangle3D projected_triangle(origin_point, left_point, right_point, triangle.texture * texture);
+  SimpleObject::Triangle3D projected_triangle(
+      origin_point, left_point, right_point, triangle.texture * texture);
   return projected_triangle;
- 
 }
-
 
 #endif

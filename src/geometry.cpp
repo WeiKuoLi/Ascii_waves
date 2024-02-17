@@ -1,8 +1,8 @@
 
 #include <cmath>
+#include <geometry.hpp>
 #include <string>
 #include <tuple>
-#include <geometry.hpp>
 namespace SimpleObject {
 Vector3D::Vector3D(double x, double y, double z) : x(x), y(y), z(z) {}
 
@@ -39,14 +39,7 @@ Vector3D operator*(const Vector3D &vec, double scalar) {
   return Vector3D(vec.x * scalar, vec.y * scalar, vec.z * scalar);
 };
 Vector3D operator*(double scalar, const Vector3D &vec) { return vec * scalar; };
-/*
-Point3D operator*(const Point3D& vec, double scalar) {
-    return Point3D(vec.x * scalar, vec.y * scalar, vec.z * scalar);
-};
-Point3D operator*(double scalar, const Point3D& vec){
-  return vec * scalar;
-};
-*/
+
 Point3D::Point3D(double x, double y, double z) : Vector3D(x, y, z){};
 
 Point3D::Point3D(const Vector3D &vec) : Point3D(vec.x, vec.y, vec.z){};
@@ -55,8 +48,10 @@ Line3D::Line3D(Point3D start, Point3D end) : start(start), end(end){};
 
 Triangle3D::Triangle3D(Point3D origin_point, Point3D left_point,
                        Point3D right_point, double texture)
-    : origin_point(origin_point), left_point(left_point),
-      right_point(right_point), texture(texture) {
+    : origin_point(origin_point),
+      left_point(left_point),
+      right_point(right_point),
+      texture(texture) {
   get_normal_vector();
 };
 double Triangle3D::size() {
@@ -79,4 +74,4 @@ Vector3D Triangle3D::get_normal_vector() {
 
 Point3D origin_point(0.0, 0.0, 0.0);
 Triangle3D null_triangle(origin_point, origin_point, origin_point, 0.0);
-}; // namespace SimpleObject
+};  // namespace SimpleObject

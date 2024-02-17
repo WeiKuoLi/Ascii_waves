@@ -1,13 +1,12 @@
 #include <cmath>
-#include <iostream>
-#include <string>
-#include <tuple>
-#include <vector>
-
-#include <physics.hpp>
 #include <geometry.hpp>
+#include <iostream>
+#include <physics.hpp>
+#include <string>
 #include <test.hpp>
+#include <tuple>
 #include <util.hpp>
+#include <vector>
 
 int test(void) {
   SimpleObject::Point3D pt(0.1, 0.2, 0.4);
@@ -41,13 +40,15 @@ int test(void) {
   std::cout << "length is ~1: " << triangle.normal_vector.size() << endl;
 
   print("test print\n");
-  std:cout << " test triangle projection" << endl;
-  SimpleObject::Triangle3D project_triangle=project_triangle_to_canvas(triangle);
-  cout<< project_triangle.origin_point.convert_to_string()<<endl;
-  cout<< project_triangle.left_point.convert_to_string()<<endl;
-  cout<< project_triangle.right_point.convert_to_string()<<endl;
-  cout<< project_triangle.texture<<endl;
-  cout<<triangle.size()<<endl;
-  cout<<project_triangle.size()<<endl;
+std:
+  cout << " test triangle projection" << endl;
+  SimpleObject::Triangle3D project_triangle =
+      project_triangle_to_canvas(triangle);
+  cout << project_triangle.origin_point.convert_to_string() << endl;
+  cout << project_triangle.left_point.convert_to_string() << endl;
+  cout << project_triangle.right_point.convert_to_string() << endl;
+  cout << project_triangle.texture << endl;
+  cout << triangle.size() << endl;
+  cout << project_triangle.size() << endl;
   return 0;
 };
