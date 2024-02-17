@@ -2,6 +2,7 @@
 #include <animation.hpp>
 #include <iostream>
 int main(void) { 
+  std::cout << "start test" << std::endl;
   test();
 
   std::string user_input;
